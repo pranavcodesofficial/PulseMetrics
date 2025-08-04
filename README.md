@@ -8,7 +8,7 @@
 
 ## ✨ Live Demo
 
-🌐 [View Demo](https://pulsemetrics.lovable.app/)  
+🌐 [View Demo](https://pulsemetrics.vercel.app/)  
 ⚠️ *Best viewed on desktop for full layout experience.*
 
 ---
