@@ -21,10 +21,10 @@ const Navigation = () => {
     <nav className="glass-card sticky top-0 z-50 border-b border-border/50">
       <div className="container mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center space-x-3">
-          <img src={logo} alt="PulseMetrics" className="w-8 h-8 sm:w-8 sm:h-8" />
-          <span className="gradient-text text-xl font-bold hidden sm:block">PulseMetrics</span>
-        </div>
+        <a href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
+          <img src={logo} alt="PulseMetrics" className="w-8 h-8" />
+          <span className="gradient-text text-xl font-bold hidden md:block">PulseMetrics</span>
+        </a>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-1">
