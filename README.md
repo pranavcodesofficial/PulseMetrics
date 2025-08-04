@@ -1,45 +1,89 @@
-# 📊 PulseMetrics — Admin Dashboard UI
+# 📊 ImpulseMetrics
 
-A clean, responsive, and modern admin dashboard built using **React**, **Vite**, **TypeScript**, **Tailwind CSS**, and **shadcn/ui**. This project is designed as a modular, extensible, and fast frontend template for admin panels, SaaS dashboards, or internal tools.
+**ImpulseMetrics** is a sleek, responsive analytics dashboard crafted for speed and scalability. Built using **React**, **Vite**, **Tailwind CSS**, and **ShadCN/UI**, it delivers a modern interface for real-time data tracking, team management, and business intelligence insights.
 
-> **Note**: While this is a frontend-only UI, it’s been polished and fine-tuned using [Lovable](https://lovable.so) to ensure pixel-perfect design and smooth user experience.
-
----
-
-## ⚙️ Tech Stack
-
-- ⚛️ **React 18** — Component-based frontend
-- ⚡ **Vite** — Fast build & dev server
-- 💅 **Tailwind CSS** — Utility-first styling
-- 🧱 **shadcn/ui** — Pre-built, customizable components
-- 🎨 **Lovable** — Used for UI design polish and layout enhancement
-- 🧠 **TypeScript** — Safer code with type support
+> ⚡ Built with code. Polished visually using [Lovable](https://lovable.so) — no vendor lock-in, no bloat.
 
 ---
 
-## 🖥️ Features
+## ✨ Live Demo
 
-- 📊 **KPI Cards**  
-- 📈 **Charts & Insights**  
-- 👥 **Team Management Grid**  
-- ⚙️ **Settings Page with UI Components**  
-- 📁 **Reports Page (dummy content layout)**  
-- 🔄 **Activity Feed + Traffic Sources section**  
-- 🍞 **Toast Notifications, Dialogs, Modals**  
-- 📱 Fully **responsive design** for mobile & desktop  
-- 🧩 Modular components for easy reuse and extension
+🌐 [View Demo](https://pulsemetrics.lovable.app/)  
+⚠️ *Best viewed on desktop for full layout experience.*
 
 ---
 
-## 🚀 Getting Started
+## 🛠 Tech Stack
+
+| Tool             | Purpose                                     |
+|------------------|---------------------------------------------|
+| ⚛️ React         | UI building with reusable components        |
+| ⚡ Vite           | Fast dev server & lightning-fast bundling   |
+| 🎨 Tailwind CSS   | Utility-first CSS styling                  |
+| 🧩 ShadCN/UI      | Elegant, accessible component library       |
+| 📊 Recharts       | Interactive, responsive charts              |
+| 🧠 TypeScript     | Type safety, autocompletion, and clarity    |
+| ✨ Lovable        | Visual layout polish, no-code enhancements |
+
+---
+
+## 🚀 Features
+
+- 📊 **Dashboard Overview** – KPIs, activity feed, and traffic breakdown
+- 👥 **Team Management** – Dummy team layout for future backend integration
+- 📑 **Reports Page** – Placeholder for advanced reporting modules
+- ⚙️ **Settings Page** – Clean UI shell for user preferences
+- 🧱 **Componentized Architecture** – Easily extensible with clean separation
+- 📱 **Fully Responsive** – Mobile-friendly layouts with zero compromise
+
+---
+
+## 📁 Folder Structure
+ImpulseMetrics/
+├── public/
+│   └── index.html
+├── src/
+│   ├── assets/         # Icons and media
+│   ├── components/     # Reusable UI components
+│   ├── pages/          # Dashboard, Reports, Teams, Settings
+│   ├── lib/            # Utility functions
+│   ├── hooks/          # Custom React hooks
+│   ├── App.tsx         # Layout and route setup
+│   └── main.tsx        # Entry point for React/Vite
+├── tailwind.config.js  # Tailwind theme customization
+├── index.css           # Global styles
+├── package.json
+└── vite.config.ts      # Vite build config
+
+---
+
+## 🧪 Getting Started
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+- [Node.js](https://nodejs.org/) (v18 or above)
+- npm or yarn
+
+### Installation
+
+Clone the repository and install dependencies:
 
 ```bash
-# 1. Clone the repo
-git clone https://github.com/your-username/pulsemetrics-dashboard.git
-cd pulsemetrics-dashboard
+git clone https://github.com/yourusername/impulsemetrics.git
+cd impulsemetrics
+npm install   # or yarn install
 
-# 2. Install dependencies
-npm install
+Run Locally:
+npm run dev   # or yarn dev
 
-# 3. Start dev server
-npm run dev
+📌 Notes
+	•	This is a frontend-only UI prototype. Pages like Reports and Settings are prepped for backend integration.
+	•	Lovable was used only for final visual layout polish. All code is editable and exportable.
+
+⸻
+
+📄 License
+
+This project is open-source and available under the MIT License.
