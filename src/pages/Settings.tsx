@@ -1,184 +1,214 @@
 import Navigation from '@/components/Navigation';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Switch } from '@/components/ui/switch';
-import { Skeleton } from '@/components/ui/skeleton';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Badge } from '@/components/ui/badge';
 import { 
   Settings as SettingsIcon, 
   User, 
   Bell, 
-  Shield, 
-  Palette, 
-  Database,
-  Key,
-  Globe
+  Camera
 } from 'lucide-react';
 
 const Settings = () => {
-  const settingsCategories = [
-    {
-      title: 'Profile Settings',
-      icon: User,
-      items: [
-        { label: 'Display Name', value: 'John Doe' },
-        { label: 'Email', value: 'john.doe@company.com' },
-        { label: 'Profile Picture', component: 'avatar' },
-        { label: 'Bio', value: 'Analytics Manager' }
-      ]
-    },
-    {
-      title: 'Notifications',
-      icon: Bell,
-      items: [
-        { label: 'Email Notifications', component: 'switch', defaultChecked: true },
-        { label: 'Push Notifications', component: 'switch', defaultChecked: false },
-        { label: 'Weekly Reports', component: 'switch', defaultChecked: true },
-        { label: 'Team Updates', component: 'switch', defaultChecked: true }
-      ]
-    },
-    {
-      title: 'Privacy & Security',
-      icon: Shield,
-      items: [
-        { label: 'Two-Factor Authentication', component: 'switch', defaultChecked: false },
-        { label: 'Login Alerts', component: 'switch', defaultChecked: true },
-        { label: 'Data Sharing', component: 'switch', defaultChecked: false },
-        { label: 'Session Timeout', value: '30 minutes' }
-      ]
-    },
-    {
-      title: 'Appearance',
-      icon: Palette,
-      items: [
-        { label: 'Theme', value: 'Dark Mode' },
-        { label: 'Language', value: 'English (US)' },
-        { label: 'Date Format', value: 'MM/DD/YYYY' },
-        { label: 'Timezone', value: 'UTC-8 (PST)' }
-      ]
-    }
-  ];
-
-  const renderSettingItem = (item: any, index: number) => {
-    if (item.component === 'switch') {
-      return (
-        <div key={index} className="flex items-center justify-between p-3 rounded-lg bg-muted/20">
-          <span className="text-sm font-medium">{item.label}</span>
-          <Switch defaultChecked={item.defaultChecked} />
-        </div>
-      );
-    }
-    
-    if (item.component === 'avatar') {
-      return (
-        <div key={index} className="flex items-center justify-between p-3 rounded-lg bg-muted/20">
-          <span className="text-sm font-medium">{item.label}</span>
-          <Avatar className="h-10 w-10">
-            <AvatarImage src="/placeholder-avatar.jpg" alt="Profile" />
-            <AvatarFallback>JD</AvatarFallback>
-          </Avatar>
-        </div>
-      );
-    }
-
-    return (
-      <div key={index} className="flex items-center justify-between p-3 rounded-lg bg-muted/20">
-        <span className="text-sm font-medium">{item.label}</span>
-        <span className="text-sm text-muted-foreground">{item.value}</span>
-      </div>
-    );
-  };
-
   return (
     <div className="min-h-screen bg-gradient-main text-foreground">
       <Navigation />
       
       <main className="container mx-auto px-6 py-8">
-        {/* Coming Soon Banner */}
-        <div className="mb-8 p-4 rounded-lg bg-muted/20 border border-border/50">
-          <p className="text-center text-muted-foreground">
-            🚧 Coming soon — part of our product roadmap.
-          </p>
-        </div>
-
         {/* Page Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold gradient-text mb-2">Settings</h1>
+          <h1 className="text-3xl font-bold gradient-text mb-2">Platform Settings</h1>
           <p className="text-muted-foreground">Manage your account preferences and configurations</p>
         </div>
 
-        {/* Quick Settings */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          {[
-            { title: 'API Keys', icon: Key, count: '3 active' },
-            { title: 'Integrations', icon: Database, count: '5 connected' },
-            { title: 'Webhooks', icon: Globe, count: '2 configured' },
-            { title: 'Backups', icon: Shield, count: 'Daily' }
-          ].map((setting, index) => (
-            <Card key={index} className="glass-card border-border/50 hover:shadow-glow transition-all duration-300">
-              <CardContent className="p-4">
-                <div className="flex items-center space-x-3">
-                  <div className="p-2 rounded-lg bg-primary/20">
-                    <setting.icon className="h-4 w-4 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-medium">{setting.title}</h3>
-                    <p className="text-xs text-muted-foreground">{setting.count}</p>
-                  </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Account Preferences */}
+          <Card className="glass-card border-border/50">
+            <CardHeader>
+              <CardTitle className="flex items-center space-x-2">
+                <User className="h-5 w-5" />
+                <span>Account Preferences</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              {/* Profile Picture */}
+              <div className="flex items-center space-x-4">
+                <Avatar className="h-20 w-20">
+                  <AvatarImage src="/placeholder-avatar.jpg" alt="Profile" />
+                  <AvatarFallback className="bg-primary/20 text-primary text-lg">JD</AvatarFallback>
+                </Avatar>
+                <div>
+                  <Button variant="outline" size="sm" className="flex items-center space-x-2">
+                    <Camera className="h-4 w-4" />
+                    <span>Change Photo</span>
+                  </Button>
+                  <p className="text-xs text-muted-foreground mt-1">JPG, PNG or GIF. Max 2MB.</p>
                 </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+              </div>
 
-        {/* Settings Categories */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {settingsCategories.map((category, categoryIndex) => (
-            <Card key={categoryIndex} className="glass-card border-border/50">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <category.icon className="h-5 w-5" />
-                  <span>{category.title}</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
+              {/* Name */}
+              <div className="space-y-2">
+                <Label htmlFor="full-name">Full Name</Label>
+                <Input 
+                  id="full-name" 
+                  defaultValue="John Doe" 
+                  className="bg-muted/20 border-border/50"
+                />
+              </div>
+
+              {/* Email */}
+              <div className="space-y-2">
+                <Label htmlFor="email">Email Address</Label>
+                <Input 
+                  id="email" 
+                  type="email" 
+                  defaultValue="john.doe@pulsemetrics.com" 
+                  className="bg-muted/20 border-border/50"
+                />
+              </div>
+
+              {/* Timezone */}
+              <div className="space-y-2">
+                <Label htmlFor="timezone">Timezone</Label>
+                <Select defaultValue="utc-8">
+                  <SelectTrigger className="bg-muted/20 border-border/50">
+                    <SelectValue placeholder="Select timezone" />
+                  </SelectTrigger>
+                  <SelectContent className="glass-card border-border/50">
+                    <SelectItem value="utc-8">(UTC-08:00) Pacific Time</SelectItem>
+                    <SelectItem value="utc-5">(UTC-05:00) Eastern Time</SelectItem>
+                    <SelectItem value="utc-0">(UTC+00:00) GMT</SelectItem>
+                    <SelectItem value="utc+1">(UTC+01:00) Central European Time</SelectItem>
+                    <SelectItem value="utc+8">(UTC+08:00) China Standard Time</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* Company */}
+              <div className="space-y-2">
+                <Label htmlFor="company">Company</Label>
+                <Input 
+                  id="company" 
+                  defaultValue="PulseMetrics Inc." 
+                  className="bg-muted/20 border-border/50"
+                />
+              </div>
+
+              {/* Role */}
+              <div className="space-y-2">
+                <Label htmlFor="role">Role</Label>
+                <Select defaultValue="admin">
+                  <SelectTrigger className="bg-muted/20 border-border/50">
+                    <SelectValue placeholder="Select role" />
+                  </SelectTrigger>
+                  <SelectContent className="glass-card border-border/50">
+                    <SelectItem value="admin">Administrator</SelectItem>
+                    <SelectItem value="manager">Manager</SelectItem>
+                    <SelectItem value="analyst">Analyst</SelectItem>
+                    <SelectItem value="viewer">Viewer</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Notification Preferences */}
+          <Card className="glass-card border-border/50">
+            <CardHeader>
+              <CardTitle className="flex items-center space-x-2">
+                <Bell className="h-5 w-5" />
+                <span>Notification Preferences</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              {/* Email Notifications */}
+              <div className="space-y-4">
+                <h4 className="text-sm font-medium">Email Notifications</h4>
                 <div className="space-y-3">
-                  {category.items.map((item, itemIndex) => 
-                    renderSettingItem(item, itemIndex)
-                  )}
+                  <div className="flex items-center justify-between p-3 rounded-lg bg-muted/20">
+                    <div>
+                      <div className="text-sm font-medium">Weekly Reports</div>
+                      <div className="text-xs text-muted-foreground">Get weekly analytics summaries</div>
+                    </div>
+                    <Switch defaultChecked />
+                  </div>
+                  
+                  <div className="flex items-center justify-between p-3 rounded-lg bg-muted/20">
+                    <div>
+                      <div className="text-sm font-medium">Alert Notifications</div>
+                      <div className="text-xs text-muted-foreground">Critical system alerts and warnings</div>
+                    </div>
+                    <Switch defaultChecked />
+                  </div>
+                  
+                  <div className="flex items-center justify-between p-3 rounded-lg bg-muted/20">
+                    <div>
+                      <div className="text-sm font-medium">Team Updates</div>
+                      <div className="text-xs text-muted-foreground">Team member activity and changes</div>
+                    </div>
+                    <Switch />
+                  </div>
                 </div>
-              </CardContent>
-            </Card>
-          ))}
+              </div>
+
+              {/* Push Notifications */}
+              <div className="space-y-4">
+                <h4 className="text-sm font-medium">Push Notifications</h4>
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between p-3 rounded-lg bg-muted/20">
+                    <div>
+                      <div className="text-sm font-medium">Browser Notifications</div>
+                      <div className="text-xs text-muted-foreground">Real-time notifications in browser</div>
+                    </div>
+                    <Switch defaultChecked />
+                  </div>
+                  
+                  <div className="flex items-center justify-between p-3 rounded-lg bg-muted/20">
+                    <div>
+                      <div className="text-sm font-medium">Mobile App</div>
+                      <div className="text-xs text-muted-foreground">Push notifications on mobile device</div>
+                    </div>
+                    <Switch />
+                  </div>
+                </div>
+              </div>
+
+              {/* SMS Notifications */}
+              <div className="space-y-4">
+                <h4 className="text-sm font-medium">SMS Notifications</h4>
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between p-3 rounded-lg bg-muted/20">
+                    <div>
+                      <div className="text-sm font-medium">Critical Alerts</div>
+                      <div className="text-xs text-muted-foreground">SMS for critical system issues</div>
+                    </div>
+                    <Switch />
+                  </div>
+                  
+                  <div className="flex items-center justify-between p-3 rounded-lg bg-muted/20">
+                    <div>
+                      <div className="text-sm font-medium">Security Alerts</div>
+                      <div className="text-xs text-muted-foreground">SMS for security-related events</div>
+                    </div>
+                    <Switch defaultChecked />
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
 
-        {/* System Information */}
-        <Card className="glass-card border-border/50 mt-8">
-          <CardHeader>
-            <CardTitle className="flex items-center space-x-2">
-              <SettingsIcon className="h-5 w-5" />
-              <span>System Information</span>
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="p-3 rounded-lg bg-muted/20">
-                <div className="text-sm font-medium mb-1">Version</div>
-                <Badge variant="secondary">v2.4.1</Badge>
-              </div>
-              <div className="p-3 rounded-lg bg-muted/20">
-                <div className="text-sm font-medium mb-1">Last Updated</div>
-                <div className="text-sm text-muted-foreground">2 days ago</div>
-              </div>
-              <div className="p-3 rounded-lg bg-muted/20">
-                <div className="text-sm font-medium mb-1">Status</div>
-                <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
-                  Operational
-                </Badge>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+        {/* Save Button */}
+        <div className="flex justify-end mt-8">
+          <Button variant="ghost" className="flex items-center space-x-2">
+            <SettingsIcon className="h-4 w-4" />
+            <span>Save Changes</span>
+          </Button>
+        </div>
       </main>
     </div>
   );
