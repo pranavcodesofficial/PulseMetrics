@@ -10,13 +10,25 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { useLocation, useNavigate } from 'react-router-dom';
 import logo from '@/assets/logo.png';
 
 const Navigation = () => {
-  const [activeTab, setActiveTab] = useState('Dashboard');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const tabs = ['Dashboard', 'Reports', 'Team', 'Settings'];
+  const tabs = [
+    { name: 'Dashboard', path: '/' },
+    { name: 'Reports', path: '/reports' },
+    { name: 'Teams', path: '/teams' },
+    { name: 'Settings', path: '/settings' }
+  ];
+
+  const getActiveTab = () => {
+    const currentTab = tabs.find(tab => tab.path === location.pathname);
+    return currentTab ? currentTab.name : 'Dashboard';
+  };
 
   return (
     <nav className="glass-card sticky top-0 z-50 border-b border-border/50">
@@ -31,20 +43,20 @@ const Navigation = () => {
         <div className="hidden md:flex items-center space-x-1">
           {tabs.map((tab) => (
             <Button
-              key={tab}
-              variant={activeTab === tab ? 'default' : 'ghost'}
+              key={tab.name}
+              variant={getActiveTab() === tab.name ? 'default' : 'ghost'}
               size="sm"
-              onClick={() => setActiveTab(tab)}
+              onClick={() => navigate(tab.path)}
               className={`
                 relative px-4 py-2 rounded-lg transition-all duration-300
-                ${activeTab === tab
+                ${getActiveTab() === tab.name
                   ? 'bg-primary/20 text-primary shadow-glow'
                   : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
                 }
               `}
             >
-              {tab}
-              {activeTab === tab && (
+              {tab.name}
+              {getActiveTab() === tab.name && (
                 <div className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-primary rounded-full" />
               )}
             </Button>
@@ -104,15 +116,15 @@ const Navigation = () => {
           <div className="container mx-auto px-6 py-4 space-y-2">
             {tabs.map((tab) => (
               <Button
-                key={tab}
-                variant={activeTab === tab ? 'default' : 'ghost'}
+                key={tab.name}
+                variant={getActiveTab() === tab.name ? 'default' : 'ghost'}
                 className="w-full justify-start"
                 onClick={() => {
-                  setActiveTab(tab);
+                  navigate(tab.path);
                   setMobileMenuOpen(false);
                 }}
               >
-                {tab}
+                {tab.name}
               </Button>
             ))}
           </div>
