@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Bell, User, Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -23,7 +24,7 @@ const Navigation = () => {
         {/* Logo */}
         <a href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
           <img src={logo} alt="PulseMetrics" className="w-8 h-8" />
-          <span className="gradient-text text-xl font-bold hidden md:block">PulseMetrics</span>
+          <span className="gradient-text text-xl font-bold hidden sm:block">PulseMetrics</span>
         </a>
 
         {/* Desktop Navigation */}
